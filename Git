@@ -49,10 +49,17 @@ git config --global user.amail'732013884@qq.com'//设置用户邮箱
     git rm 文件小红.java
   3、提交到本地仓库
     git commit -m'文件删除描述'
+
 六、管理远程仓库
- 第一步:clone 
-
-
+ 第一步:克隆仓库到本地
+ 	命令：git clone 仓库地址
+ 第二步：vi 文件名
+ 	进行修改
+ 第三步：提交到本地仓库
+ 	1、git add 文件名
+	2、git commit -m‘修改描述’
+ 第四步：提交到远程仓库
+ 	git push
 
 
 
