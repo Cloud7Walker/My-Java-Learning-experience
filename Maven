@@ -1,1 +1,60 @@
+一、软件分层
+  1、表现层
+    视图层 HTML5/CSS/JS/JSP
+    控制层 servlet
+  2、业务逻辑层
+   Spring
+  3、持久化层
+    JDBC/DButil/Spring JDBCTemplate
+    Hibernate/MyBatis
+  4、数据库
+    MySQL/Oracle
+浏览器->表现层->业务逻辑层->持久化层->数据库
 
+二、Maven概述
+    项目管理工具，一个项目从编译、测试、运行、打包、安装、布置整个过程都可以交给Maven进行管理。
+    包含了一个项目对象模型（POM）,一个项目生命周期（Project LifeCycle）,一个依赖管理系统（Dependency Management）和一个标准集合。
+    查看本地是否安装配置了Maven软件的命令：mvn -v
+    
+三、Maven仓库
+    Maven工程通过jar包坐标->本地仓库->中央仓库
+    本地仓库->远程仓库（私服）
+    远程仓库->中央仓库
+    
+四、Maven标准目录结构
+    src/main/java       ->核心代码
+    src/main/resources  ->配置文件
+    -----------------------------
+    src/test/java       ->测试文件
+    src/test/resources  ->测试p配置文件
+    
+五、Maven常用命令
+    1、mvn clean
+    2、mvn compile
+    3、mvn test
+    4、mvn package
+    5、mvm install
+   每个命令对应Maven底层一个插件
+   
+六、Maven生命周期
+   清理生命周期
+   默认生命周期
+   站点生命周期
+   
+七、Maven概念模型
+   项目对象模型->pom.xml文件
+   依赖管理模型->Dependency
+   默认生命周期
+   1、项目对象模型
+    pom.xml文件包括：项目自身信息；项目运行依赖的jar包信息；项目运行环境信息
+   2、依赖管理模型
+    jar包的坐标信息：公司组织名称；项目名称；版本号
+八、Idea集成Maven插件
+    
+  
+  
+  
+  
+  
+  
+  
