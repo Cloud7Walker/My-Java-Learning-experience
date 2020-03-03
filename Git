@@ -60,7 +60,15 @@ git config --global user.amail'732013884@qq.com'//设置用户邮箱
 	2、git commit -m‘修改描述’
  第四步：提交到远程仓库
  	git push
+七、搭建个人博客
+        1、访问：https://用户名.github.io
+        2、创建 ->创建仓库【仓库名为：用户名.github.io】
+        3、新建index.html文件
+        注意：该仓库中只包含html文件；github仅支持静态网页。
 
+八、创建项目站点
+        1、访问：https://用户名.github.io/仓库名
+        2、setting，设置站点主题样式。
 
 
 
