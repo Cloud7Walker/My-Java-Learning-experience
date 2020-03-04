@@ -23,11 +23,91 @@ MySQL是一个关系型数据库管理系统
       sex CHAR(1),
       birth DATE
     ）;
-    8、查看数据表结构
-      describe 表名;
-    9、向数据库中添加记录
-      INSERT INTO 表名
-      VALUE (值1,值2,值3....);
-    10、mysql数据类型
+    8、mysql数据类型
       数值、时间/日期、字符串
+    9、查看数据表结构
+      describe 表名;
+    10、向数据库中添加记录
+      INSERT INTO 表名
+      VALUES (值1,值2,值3....);
+    11、删除数据
+      delete from 表名 where name =''
+    12、修改数据
+      update 表名 set name ='新数据'where owner ='谁谁谁';
+   
+------------------------------------------------------------------
+二、MySQL建表约束
+
+
+    --主键约束
+      primary key
       
+      通过给某个字段添加约束，可使该字段不重复且非空，从而能唯一确定一张表
+      create table 表名（
+        id int primary key，
+        name VARCHER(20),
+      ）;
+       INSERT INTO 表名values（1,'张三'）;
+       就不能再索引为1处再次插入了。
+       
+       复合主键
+       create table 表名（
+        id int ，
+        name VARCHER(20),
+        primary key（id,name）;
+      ）;
+      
+      
+    --自增约束
+      auto-increment
+      
+      自动增加索引序号
+      create table 表名（
+        id int primary key auto-increment，
+        name VARCHER(20),
+      ）;
+      INSERT INTO 表名(name) values（'张三'）;
+      
+    --外键约束
+      arter table add/drop/modify
+      
+    --唯一约束
+      unique
+      
+      约束修饰的字段的值不可重复
+      create table 表名（
+        id int ，
+        name VARCHER(20),
+      ）;
+       arter table 表名 add unique(name);
+       
+       删除唯一约束
+       arter table 表名 drop index name;
+       添加唯一约束
+       arter table 表名 modify name verchar(20) unique;
+       
+       小结（添加唯一约束方式）：
+        方法一：建表时添加
+        方法二：alter add
+        方法三：alter modify
+        
+       
+    --非空约束
+      not null
+      
+      约束修饰的字段的值不可为空
+        create table 表名（
+        id int ，
+        name VARCHER(20) not null,
+      ）;
+      
+    --默认约束
+      default
+      
+      在插入字段值时，若没有传值，会使用默认值
+     create table 表名（
+        id int ，
+        name VARCHER(20) ,
+        age int default 10
+      ）;
+    
