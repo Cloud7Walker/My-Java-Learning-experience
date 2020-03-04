@@ -1,0 +1,33 @@
+MySQL是一个关系型数据库管理系统
+使用SQL语言操控,SQL结构化查询语言(Structured Query Language)
+
+-----------------------------------------------------------
+一、使用终端操控数据库
+  1、登录数据库命令
+    mysql -uroot -p密码
+  2、查询服务器中所有数据库
+    show databases;
+  3、选中某一数据库
+    use 数据库名
+    select * from admin
+  4、退出数据库命令
+    exit;
+  5、在服务器中创建数据库
+    creat database 数据库名
+  6、查看某数据库中所有数据表
+    show tables;
+  7、创建数据表
+    create table 表名（
+      name VARCHAR(20),
+      owner VARCHAR(20).
+      sex CHAR(1),
+      birth DATE
+    ）;
+    8、查看数据表结构
+      describe 表名;
+    9、向数据库中添加记录
+      INSERT INTO 表名
+      VALUE (值1,值2,值3....);
+    10、mysql数据类型
+      数值、时间/日期、字符串
+      
