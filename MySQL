@@ -360,7 +360,7 @@ course    SELECT * FROM course;
 | 9-888 | 高等数学   | 831  |
 +-------+------------+------+
 
-查询联系
+查询练习
 -- 1.查询student表中所有的记录
 
 SELECT * FROM student;
@@ -1227,3 +1227,73 @@ SELECT  s.s_no, s.s_name, c.c_name ,c.c_no , grade FROM student s, course c ,sco
 | 109  | 赵铁柱 | 操作系统   | 3-245 | D     |
 | 109  | 赵铁柱 | 数字电路   | 6-166 | B     |
 +------+--------+------------+-------+-------+
+
+---------------------------------------------------------------------------
+五、MySQL事务
+    事务是最小的不可分割的工作单元，能保证业务完整性
+    
+    实际程序中，多条SQL语句，可能会有同时成功的要求，要么就同时失败。
+
+    1、控制事务
+      MySQL默认是开启事务的。
+      select @@autocommit值为1
+      默认开启事务的作用是：当我们执行一个SQL语句时，效果会立即体现，且不能回滚
+      回滚（rollback）：撤销上步SQL语句执行
+      
+      若需要回滚生效，则设置
+      set autocommit = 0;
+      
+      手动提交 commit;
+      
+    
+      begin;
+      或者start transaction;
+      都可以帮我们手动开启一个事务
+      手动开启事务可给我们提供了一次撤销的机会
+      
+      刚开始是 @autocommit=1(开启状态) 不可回滚
+      set @autocommit =1(关闭自动提交)可回滚 
+      但是此时用commit(手动提交) 也是不可回滚的
+      begin 和 start transaction 是小开关，set autocommit 是总开关
+      
+      2、事务的四大特征
+         A 原子性 事务是最小单位，不可分割
+         B 一致性 同一事务多条SQL语句，必须同时成功或者就同时失败
+         C 隔离性 事务1和事务2之间不同的
+         D 持久性 事务一旦结束（commit，rollback）就不可返回
+         
+         事务开启方式：
+            1：修改默认提交 set autocommit =0;
+            2:begin;
+            3:start transaction;
+          事务手动提交：
+            commit
+          事务手动回滚：
+            rollback
+            
+            
+          事务隔离性级别：
+            1：read uncommitted; ->读未提交的
+            2: read committed;   ->读已提交的
+            3: repeatable read;  ->可重复读的
+            4: serializable;     ->串行化
+         
+               查询事务隔离性级别语句：
+                select @@globle.transaction_isolation
+                
+              修改事务隔离性级别语句
+                set transaction isolation level read committed;
+                
+                
+            1：read uncommitted
+              事务A对数据进行操作过程中，事务未提交时事务B可以看到事务A的操作结果
+              
+            2: read committed  
+              
+              
+            3: repeatable read
+            
+            4: serializable
+            
+  
+  
