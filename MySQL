@@ -1275,25 +1275,29 @@ SELECT  s.s_no, s.s_name, c.c_name ,c.c_no , grade FROM student s, course c ,sco
           事务隔离性级别：
             1：read uncommitted; ->读未提交的
             2: read committed;   ->读已提交的
-            3: repeatable read;  ->可重复读的
+            3: repeatable read;  ->可重复读的-->MySQL默认隔离级别
             4: serializable;     ->串行化
          
                查询事务隔离性级别语句：
-                select @@globle.transaction_isolation
+                select @@globle.transaction_isolation;
                 
               修改事务隔离性级别语句
-                set transaction isolation level read committed;
+                set global transaction isolation level read committed;
                 
                 
             1：read uncommitted
               事务A对数据进行操作过程中，事务未提交时事务B可以看到事务A的操作结果
-              
+              出现“脏读”问题
             2: read committed  
-              
+              读取同一个表的数据，发现前后不一致
+              出现“不可重复性”问题
               
             3: repeatable read
-            
+              事务A和事务B同时操作一张表，事务A提交的数据，也不能被事务B读到
+              出现“幻读”问题
             4: serializable
-            
-  
-  
+              当表被一个事务A操作时，其他事务里的写操作是不可执行的，会进入排队状态（串行化），直到事务A提交。
+              性能特差！
+              
+              总结：隔离级别越高，性能越差！
+        
