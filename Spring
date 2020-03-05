@@ -1,0 +1,14 @@
+一、Spring概述
+    Spring是分层的Java SE/EE应用全栈式轻量级开发框架
+    以IOC和AOP为内核
+    IOC:Inverse Of Control 反转控制
+    AOP:Aspect Orientrd Programming 面向切片编程
+二、Spring优势
+    1、方便解耦，简化开发
+    2、AOP编程的支持
+    3、声明式事务的支持
+    4、方便程序的测试
+    5、方便集成各种优秀框架
+    6、降低Java EE API的使用难度
+三、Spring的体系结构
+    
