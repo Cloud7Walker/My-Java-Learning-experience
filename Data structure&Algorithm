@@ -1,1 +1,71 @@
+一、稀疏数组
+public class sparseArrayTest01 {
+    public static void main(String[] args) {
+//        创建原始二维数组11*11
+//        0表示无旗子，1表示黑子，2表示白子
+        int chessArr1[][] = new int [11][11];
+        chessArr1[1][2] = 1;
+        chessArr1[2][3] = 2;
+//        输出原始二维数组
+        System.out.println("原始二维数组");
+        for(int[] row : chessArr1){
+            for(int data :row ){
+                System.out.print(data+"   ");
+            }
+            System.out.println();
+        }
+//        二维数组转稀疏数组
+//        第一步：遍历原始二维数组，找到非0数
+        int sum = 0;
+        for (int i = 0; i < chessArr1.length; i++) {    //二维数组.length为其行数；二维数组[0].length为其列数
+
+            for (int j = 0; j <chessArr1[0].length ; j++) {
+                if(chessArr1[i][j] != 0){
+                    sum++;
+                }
+            }
+        }
+        System.out.println("sum="+sum);
+//        第二步：创建稀疏数组
+        int sparseArr1[][] = new int [sum+1][3];
+//        第三步：将有效数据存入稀疏数组
+        sparseArr1[0][0] = chessArr1.length;
+        sparseArr1[0][1] = chessArr1[0].length;
+        sparseArr1[0][2] = sum;
+//        遍历二维数组，将非0值存入稀疏数组
+        int count = 0;      //用于记录是第几个非0数据
+        for (int i = 0; i < chessArr1.length; i++) {
+            for (int j = 0; j <chessArr1[0].length ; j++) {
+                if(chessArr1[i][j] != 0){
+                    count++;
+                   sparseArr1[count][0] = i;
+                   sparseArr1[count][1] = j;
+                   sparseArr1[count][2] = chessArr1[i][j];
+
+                }
+            }
+        }
+//        输出稀疏数组
+        System.out.println("稀疏维数组");
+        for (int i = 0; i < sparseArr1.length; i++) {
+            System.out.println(sparseArr1[i][0]+"  "+sparseArr1[i][1]+"  "+sparseArr1[i][2]);
+        }
+//        稀疏数组转二维数组
+//        第一步：读取稀疏数组第一行，根据第一行数据，创建原始二维数组
+        int chessArr2[][] = new int[sparseArr1[0][0]][sparseArr1[0][1]];
+//        第二步：读取稀疏数组，并赋给原始数组
+        for (int i = 1; i < sparseArr1.length; i++) {
+            chessArr2[sparseArr1[i][0]][sparseArr1[i][1]] = sparseArr1[i][2];
+
+        }
+//        原始二维数组数组
+        System.out.println("原始二维数组");
+        for(int[] row : chessArr1){
+            for(int data :row ){
+                System.out.print(data+"   ");
+            }
+            System.out.println();
+        }
+    }
+}
 
