@@ -276,8 +276,8 @@ class circleArray{
     public circleArray(int arrMaxSize) {
         maxSize = arrMaxSize;
         arr = new int[maxSize];
-        front = 0;//指向队列头部，是指向队列头的前一个位置
-        rear = 0;//指向队列尾部，直接指向队列最后一个数据
+        front = 0;//直接指向队列头
+        rear = 0;//指向队列尾后一个位置
     }
     //    创建判断队列是否为满的方法
     public boolean isFull() {
