@@ -382,6 +382,9 @@ class SingleLinkedList{
 //        当退出while循环时，temp就指向了链表的最后
         temp.next = heroNode;
     }
+
+
+
 //第二种添加方式是：在添加英雄时，会根据排名将英雄插入到指定位置
 //如果有这个排名，则添加失败，并给出提示
     public void addByOrder(HeroNode heroNode){
@@ -456,4 +459,7 @@ public HeroNode(int hNo,String hName,String hnickName){
                 ", nickName='" + nickName + '\''  +
                 '}';
     }
+
 }
+
+修改、删除、查询
