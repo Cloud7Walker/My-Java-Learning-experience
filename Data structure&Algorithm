@@ -575,7 +575,27 @@ class SingleLinkedList02 {
             System.out.println("没有找到该编号节点");
         }
     }
-
+//删除节点
+    public void del(int No) {
+        HeroNode temp = head;
+        boolean flag = false;
+        while (true){
+            if(temp.next == null){
+                break;
+            }
+            if (temp.next.No == No){
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+//        判断flag
+        if (flag){
+            temp.next = temp.next.next;
+        }else {
+            System.out.println("未找到编号为:"+No+"的节点。");
+        }
+    }
     //显示链表方法
     public void show() {
         if (head.next == null) {
