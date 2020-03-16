@@ -462,10 +462,134 @@ public HeroNode(int hNo,String hName,String hnickName){
 
 }
 
-修改、删除、查询】
+单链表修改节点信息
+/**
+ * @author Cloud7Walker
+ * @date 2020/3/16 - 15:49
+ */
+public class SingleLinkedListTest02 {
+    public static void main(String[] args) {
+//        创建节点
+        HeroNode hero01 = new HeroNode(1, "盖伦", "gay伦");
+        HeroNode hero02 = new HeroNode(2, "艾希", "寒冰");
+        HeroNode hero03 = new HeroNode(3, "崔丝塔娜", "小炮");
+        HeroNode hero04 = new HeroNode(4, "格雷福斯", "男枪");
+//        创建单链表的类
+        SingleLinkedList02 singleLinkedList = new SingleLinkedList02();
+//        加入节点
+        singleLinkedList.addByOrder02(hero01);
+        singleLinkedList.addByOrder02(hero03);
+        singleLinkedList.addByOrder02(hero02);
+        singleLinkedList.addByOrder02(hero04);
+//        显示单链表
+        singleLinkedList.show();
+        System.out.println();
+//        修改节点
+        HeroNode02 newHeroNode = new HeroNode02(2,"泰隆","男刀");
+        singleLinkedList.update(newHeroNode);
 
+//        显示单链表
+        System.out.println("修改后的链表");
+        singleLinkedList.show();
+    }
+}
 
-1231231231231231123
-121213123
-12312311111111111111
-233333333333333333
+//定义节点的类
+class HeroNode02 {
+    public int No;
+    public String Name;
+    public String NickName;
+    public HeroNode02 Next;
+
+    //    快捷键alt+ins可生成构造器、set/get、重写equals()/hashcode()、toString()方法
+    public HeroNode02(int no, String name, String nickName) {
+        this.No = no;
+        this.Name = name;
+        this.NickName = nickName;
+    }
+
+    @Override
+    public String toString() {
+        return "HeroNode02{" +
+                "No=" + No +
+                ", Name='" + Name + '\'' +
+                ", NickName='" + NickName + '\'' +
+                '}';
+    }
+}
+
+//定义单链表来管理节点
+class SingleLinkedList02 {
+    //初始化头节点
+    private HeroNode head = new HeroNode(0, "", "");
+
+    //添加节点方法
+    public void addByOrder02(HeroNode heroNode) {
+        HeroNode temp02 = head;
+        boolean flag02 = false;
+        while (true) {
+            if (temp02.next == null) {
+                break;
+            }
+            if (temp02.next.No > heroNode.No) {
+                break;
+            } else if (temp02.next.No == heroNode.No) {
+                flag02 = true;
+                break;
+            }
+            temp02 = temp02.next;
+        }
+        //判断flag的值
+        if (flag02) {
+            System.out.println("准备插入的英雄编号：" + heroNode.No + "已经存在！");
+        } else {
+            heroNode.next = temp02.next;
+            temp02.next = heroNode;
+        }
+    }
+
+    //    修改节点信息
+    public void update(HeroNode02 newHeroNode) {
+//       判断是否为空
+        if (head.next == null) {
+            System.out.println("链表为空");
+            return;
+        }
+        HeroNode temp = head.next;
+        boolean flag = false;
+        while (true) {
+            if (temp == null) {
+                break;
+            }
+            if (temp.No == newHeroNode.No) {
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+        }
+//        根据flag判断是否修改
+        if (flag) {
+            temp.Name = newHeroNode.Name;
+            temp.nickName = newHeroNode.NickName;
+        } else {
+            System.out.println("没有找到该编号节点");
+        }
+    }
+
+    //显示链表方法
+    public void show() {
+        if (head.next == null) {
+            System.out.println("链表为空！");
+            return;
+        }
+        HeroNode temp02 = head.next;
+        while (true) {
+            if (temp02 == null) {
+                break;
+            }
+            System.out.println(temp02);
+            temp02 = temp02.next;
+        }
+
+    }
+}
